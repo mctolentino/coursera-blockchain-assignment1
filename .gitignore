@@ -4,3 +4,4 @@
 *.iws 
 .gradle/ 
 .DS_Store 
+build/
