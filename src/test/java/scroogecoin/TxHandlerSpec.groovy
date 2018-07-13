@@ -1,31 +1,31 @@
 package scroogecoin
 
 import spock.lang.Specification
+import sun.misc.BASE64Encoder
+
+import javax.crypto.Cipher
+import java.nio.charset.StandardCharsets
+import java.security.KeyPair
+import java.security.KeyPairGenerator
+import java.security.PrivateKey
+import java.security.PublicKey
+
 
 class TxHandlerSpec extends Specification {
 
-    def 'Should handle transactions'() {
-        given:
-        TxHandler txHandler = new TxHandler(null)
-
-        when:
-        Transaction[] txs = txHandler.handleTxs(null)
-
-        then:
-        txs == null
+    def setup() {
     }
 
-
-    def 'Should check if transaction is valid'() {
+    def 'Should initialize Transaction Handler using a pool of unspent transaction output'() {
         given:
         UTXOPool pool = new UTXOPool()
-        TxHandler txHandler = new TxHandler(pool)
-        Transaction tx = new Transaction()
+        TxHandler handler = new TxHandler(pool)
 
-        when:
-        boolean isValid = txHandler.isValidTx(tx)
+        expect:
+        handler.getTxnPoolSize() == 0
+    }
 
-        then:
-        isValid == false
+    def 'Should validate transactions'() {
+            PRGen
     }
 }
